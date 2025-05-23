@@ -1,42 +1,82 @@
-// src/app/page.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useOnnxSession } from './hooks/useOnnxSession';
+import Recorder from './components/Recorder';
 import FileUploader from './components/FileUploader';
+import AudioPreview from './components/AudioPreview';
 import ProcessingStatus from './components/ProcessingStatus';
-import AudioPlayer from './components/AudioPlayer';
 import { runPipeline } from './utils/onnxRuntimeClient';
 
 export default function Home() {
-  const [status, setStatus] = useState<string | null>(null);
-  const [outputUrl, setOutputUrl] = useState<string | null>(null);
-  const [useGPU, setUseGPU] = useState<boolean>(false);
+  const session = useOnnxSession('/model/hubert_base.onnx');
+  const [sourceFile, setSourceFile] = useState<File | null>(null);
+  const [sourceURL, setSourceURL]   = useState<string | null>(null);
+  const [resultURL, setResultURL]   = useState<string | null>(null);
+  const [status, setStatus]         = useState<string | null>(null);
 
-  const handleFile = async (file: File) => {
-    setStatus('読み込み中...');
-    const provider = useGPU ? 'webgl' : 'wasm';
-    const url = await runPipeline(file, setStatus, provider);
-    setOutputUrl(url);
-    setStatus(null);
+  // 録音後にプレビュー用URLを生成
+  useEffect(() => {
+    if (sourceFile) {
+      setSourceURL(URL.createObjectURL(sourceFile));
+      setResultURL(null);
+    }
+  }, [sourceFile]);
+
+  const handleInfer = async () => {
+    if (!session || !sourceFile) return;
+    setStatus('推論中…');
+    try {
+      const url = await runPipeline(sourceFile, setStatus, 'wasm');
+      setResultURL(url);
+      setStatus(null);
+    } catch (e: any) {
+      setStatus(`エラー: ${e.message}`);
+    }
   };
 
   return (
-    <>
-      <h1 className="text-2xl font-bold mb-4">RVC 音声変換 Webアプリ</h1>
-      <div className="mb-4">
-        <label className="inline-flex items-center">
-          <input
-            type="checkbox"
-            className="form-checkbox"
-            checked={useGPU}
-            onChange={e => setUseGPU(e.target.checked)}
-          />
-          <span className="ml-2">GPU（WebGL）を使う</span>
-        </label>
-      </div>
-      <FileUploader onFileReady={handleFile} />
-      {status && <ProcessingStatus message={status} />}
-      {outputUrl && <AudioPlayer src={outputUrl} />}
-    </>
+    <div className="w-full max-w-xl space-y-8">
+      <h1 className="text-5xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
+        AIずんだもん 2
+      </h1>
+
+      {!session ? (
+        <p className="text-center text-gray-400">モデルを読み込み中…</p>
+      ) : (
+        <>
+          {/* 入力コントロール */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <Recorder onRecorded={(blob) => setSourceFile(new File([blob], 'record.wav'))} />
+            <FileUploader onFileReady={setSourceFile} />
+          </div>
+
+          {/* プレビュー */}
+          {sourceURL && (
+            <AudioPreview label="Before" src={sourceURL} />
+          )}
+
+          {/* 推論開始 */}
+          {sourceFile && (
+            <div className="text-center">
+              <button
+                onClick={handleInfer}
+                className="px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full font-semibold text-white hover:from-pink-600 hover:to-purple-600 transition"
+              >
+                推論を開始する
+              </button>
+            </div>
+          )}
+
+          {/* ステータス */}
+          {status && <ProcessingStatus message={status} />}
+
+          {/* 結果プレビュー */}
+          {resultURL && (
+            <AudioPreview label="After" src={resultURL} />
+          )}
+        </>
+      )}
+    </div>
   );
 }
