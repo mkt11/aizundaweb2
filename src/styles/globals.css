@@ -1,9 +1,19 @@
 /* src/styles/globals.css */
 @import "tailwindcss";
 
-/* フルスクリーン・余白リセット */
 html, body, #__next {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+/* プログレスバー用アニメーションをユーティリティに登録 */
+@layer utilities {
+  @keyframes progress {
+    0% { width: 0% }
+    100% { width: 100% }
+  }
+  .animate-progress {
+    animation: progress 3s linear infinite;
+  }
 }

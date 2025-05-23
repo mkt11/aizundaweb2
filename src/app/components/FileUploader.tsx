@@ -16,7 +16,7 @@ export default function FileUploader({ onFileReady }: FileUploaderProps) {
           if (file) onFileReady(file);
         }}
       />
-      <p className="text-gray-300">ファイルをここにドロップ、またはクリックして選択</p>
+      <p className="text-gray-300">wavファイルをここにドロップ、またはクリックして選択</p>
     </label>
   );
 }

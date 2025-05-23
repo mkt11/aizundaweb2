@@ -25,7 +25,7 @@ export default function Home() {
 
   const handleInfer = async () => {
     if (!session || !sourceFile) return;
-    setStatus('WASM バックエンドで推論中…');
+    setStatus('推論中…');
     try {
       const url = await runPipeline(sourceFile, setStatus, 'wasm');
       setResultURL(url);
@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <div className="w-full max-w-xl space-y-8">
       <h1 className="text-5xl font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-500">
-        RVC 音声変換
+        AIずんだもん 2
       </h1>
 
       {!session ? (
