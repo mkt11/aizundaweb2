@@ -2,41 +2,54 @@
 'use client';
 
 import { useState } from 'react';
+import { useOnnxSession } from './hooks/useOnnxSession';
 import FileUploader from './components/FileUploader';
 import ProcessingStatus from './components/ProcessingStatus';
 import AudioPlayer from './components/AudioPlayer';
 import { runPipeline } from './utils/onnxRuntimeClient';
 
 export default function Home() {
+  const session = useOnnxSession('/model/AISO-HOWATTO.onnx');
   const [status, setStatus] = useState<string | null>(null);
   const [outputUrl, setOutputUrl] = useState<string | null>(null);
-  const [useGPU, setUseGPU] = useState<boolean>(false);
 
   const handleFile = async (file: File) => {
-    setStatus('読み込み中...');
-    const provider = useGPU ? 'webgl' : 'wasm';
-    const url = await runPipeline(file, setStatus, provider);
-    setOutputUrl(url);
-    setStatus(null);
+    if (!session) return;
+    setStatus('処理中... WASM バックエンドで推論しています');
+    try {
+      const url = await runPipeline(file, setStatus, 'wasm');
+      setOutputUrl(url);
+      setStatus(null);
+    } catch (e: any) {
+      setStatus(`エラーが発生しました: ${e.message}`);
+    }
   };
 
   return (
-    <>
-      <h1 className="text-2xl font-bold mb-4">RVC 音声変換 Webアプリ</h1>
-      <div className="mb-4">
-        <label className="inline-flex items-center">
-          <input
-            type="checkbox"
-            className="form-checkbox"
-            checked={useGPU}
-            onChange={e => setUseGPU(e.target.checked)}
-          />
-          <span className="ml-2">GPU（WebGL）を使う</span>
-        </label>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-lg">
+        <h1 className="text-3xl font-bold text-center mb-6">RVC 音声変換 (WASM)</h1>
+        {!session ? (
+          <p className="text-center text-gray-500">モデルを読み込み中…</p>
+        ) : (
+          <>
+            <div className="mb-6">
+              <FileUploader onFileReady={handleFile} />
+            </div>
+            {status && (
+              <div className="mb-6 p-4 bg-yellow-100 text-yellow-800 rounded">
+                <ProcessingStatus message={status} />
+              </div>
+            )}
+            {outputUrl && (
+              <div className="mt-6">
+                <h2 className="text-xl font-semibold mb-2">変換結果プレビュー</h2>
+                <AudioPlayer src={outputUrl} />
+              </div>
+            )}
+          </>
+        )}
       </div>
-      <FileUploader onFileReady={handleFile} />
-      {status && <ProcessingStatus message={status} />}
-      {outputUrl && <AudioPlayer src={outputUrl} />}
-    </>
+    </div>
   );
 }
