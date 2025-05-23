@@ -1,0 +1,18 @@
+rvc-python 
+torch==2.1.1+cpu --index-url https://download.pytorch.org/whl/cpu
+torchaudio==2.1.1+cpu --index-url https://download.pytorch.org/whl/cpu
+ffmpeg-python
+soundfile
+requests
+pyworld
+torchcrepe
+praat-parselmouth>=0.4.2
+numpy<=1.23.5
+fairseq==0.12.2
+faiss-cpu==1.7.3
+av
+loguru
+uvicorn
+fastapi
+pydantic
+python-multipart
