@@ -1,16 +1,21 @@
-// src/app/layout.tsx
-import '../styles/globals.css';
+import '@/styles/globals.css';
 import { ReactNode } from 'react';
+
+export const metadata = {
+  title: 'AIZundaWeb2',
+};
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
       <head>
-        <title>RVC 音声変換 Web</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body>
-        <main className="container mx-auto p-4">{children}</main>
+      <body className="bg-gradient-to-br from-gray-900 to-black text-white">
+        <div className="min-h-screen flex items-center justify-center p-4">
+          {children}
+        </div>
       </body>
     </html>
   );
