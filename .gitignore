@@ -46,3 +46,6 @@ next-env.d.ts
 
 # model files
 /public/model/*.onnx
+
+# server model files
+/server_model/*.onnx
