@@ -47,7 +47,7 @@ export default function Infomation() {
                   <line x1="6" y1="18" x2="18" y2="6" stroke="currentColor" strokeWidth="2" />
                 </svg>
               </button>
-              <h2 className="text-xl font-bold mb-2 text-green-700">AI ZUNDA WEB 2</h2>
+              <h2 className="text-xl font-bold mb-2 text-green-700">naryouyoTsukuyomi-chan!</h2>
               <p className="mb-3 text-sm">
                 本アプリは、AI技術を活用した音声変換・合成体験が可能なWebサービスです。音声を録音し、サーバまたはローカルでAI推論による音声変換を実行できます。
               </p>
@@ -58,10 +58,10 @@ export default function Infomation() {
                 <b>ライセンス</b>
                 <br></br>
                 <span className="ml-1">
-                VOICEVOX:ずんだもん <br></br>
+                声質変換：つくよみちゃん公式RVCモデル<br></br>
                 </span>
                 <span className="ml-1">
-                立ち絵：坂本アヒル 様
+                イラスト素材：えみゃコーラ 様（https://tyc.rei-yumesaki.net/material/illust/）
                 </span>
               </div>
               <div className="text-right mt-2">

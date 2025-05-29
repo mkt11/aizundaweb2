@@ -22,36 +22,16 @@ export default function DisclaimerModal({ visible, onClose }: DisclaimerModalPro
             変換後の音声のインターネット上への公開や再配布は固くご遠慮ください。
           </li>
           <li>
-            本アプリケーションは
-            <a
-              href="https://zunko.jp/con_ongen_kiyaku.html"
-              className="underline text-blue-600 hover:text-blue-700 mx-1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              VOICEVOX:ずんだもん
-            </a>
-            および
-            <a
-              href="https://zunko.jp/guideline.html"
-              className="underline text-blue-600 hover:text-blue-700 mx-1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              キャラクターの利用規約
-            </a>
-            を遵守しております。
-            万一、権利上の問題が確認された場合は、速やかに公開停止等の対応を行いますので、
-            ご意見・ご指摘がございましたら、
-            <a
-              href="mkt11official@gmail.com"
-              className="underline text-blue-600 hover:text-blue-700 ml-1"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              こちら
-            </a>
-            までご連絡ください。
+          本ソフトウェアの音声合成には、フリー素材キャラクター「つくよみちゃん」（© Rei Yumesaki）が無料公開している音声データを使用しています。
+          <br/>
+          ■つくよみちゃんコーパス（CV.夢前黎）
+          https://tyc.rei-yumesaki.net/material/corpus/
+          <br/>
+          ■つくよみちゃんUTAU音源（CV.夢前黎）
+          https://tyc.rei-yumesaki.net/material/utau/
+          <br/>
+          ■つくよみちゃん公式RVCモデル（CV.夢前黎）
+          https://tyc.rei-yumesaki.net/work/software/rvc/
           </li>
         </ul>
         <div className="flex justify-center mt-7">
