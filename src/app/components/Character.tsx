@@ -7,7 +7,7 @@ type Stage = 'idle' | 'recording' | 'inference';
 
 const images: Record<Stage, string> = {
   idle:      '/tsukuyomichan_image/tukuyomi3_0000.png',
-  recording: '/tsukuyomichan_image/tukuyomi3_0001.png', // ★ 録音中専用
+  recording: '/tsukuyomichan_image/tukuyomi3_0001.png',
   inference: '/tsukuyomichan_image/tukuyomi3_0002.png',
 };
 
@@ -25,12 +25,12 @@ export default function Character({ stage }: { stage: Stage }) {
         scale:   { duration: 0.8 },
         y:       { duration: 10, repeat: Infinity, ease: 'easeInOut' },
       }}
-      className="w-100 h-130 mx-auto"
+      className="w-100 h-130 mx-auto select-none pointer-events-none"
     >
       <img
         src={images[stage]}
         alt="キャラクター"
-        className="w-full h-full object-contain select-none"
+        className="w-full h-full object-contain"
         draggable={false}
       />
     </motion.div>
