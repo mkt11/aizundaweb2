@@ -5,19 +5,23 @@ export const runtime = 'nodejs'
 
 export async function POST(req: NextRequest) {
   try {
-    const form = await req.formData()
-    const file = form.get('file') as Blob
+    const form = await req.formData();
+    const file = form.get('file') as Blob;
+    const semitone = parseInt(form.get('semitone') as string) || 0;
+
     if (!file) {
-      return NextResponse.json({ error: 'file is required' }, { status: 400 })
+      return NextResponse.json({ error: 'file is required' }, { status: 400 });
     }
-    const buf    = await file.arrayBuffer()
-    const result = await inferRvc(new Uint8Array(buf), 12)
+    const buf = await file.arrayBuffer();
+
+    const result = await inferRvc(new Uint8Array(buf), semitone);
+
     return new NextResponse(result, {
       status: 200,
       headers: { 'Content-Type': 'audio/wav' }
-    })
+    });
   } catch (e: any) {
-    console.error('API infer error:', e)
-    return NextResponse.json({ error: e.message || String(e) }, { status: 500 })
+    console.error('API infer error:', e);
+    return NextResponse.json({ error: e.message || String(e) }, { status: 500 });
   }
 }
