@@ -19,7 +19,10 @@ export default function DisclaimerModal({ visible, onClose }: DisclaimerModalPro
           </li>
           <li>
             本ソフトウェアは体験用途向けであり、実運用目的でのご利用には適しておりません。
-            変換後の音声のインターネット上への公開や再配布は固くご遠慮ください。
+            <span className="text-red-600">変換後の音声のインターネット上への公開や再配布は禁止しております</span>
+          </li>
+          <li>
+          本サービスの利用により発生した損害について、サービス提供者は責任を負わないものとします。
           </li>
           <li>
           本ソフトウェアの音声合成には、フリー素材キャラクター「つくよみちゃん」（© Rei Yumesaki）が無料公開している音声データを使用しています。
@@ -30,8 +33,11 @@ export default function DisclaimerModal({ visible, onClose }: DisclaimerModalPro
           ■つくよみちゃんUTAU音源（CV.夢前黎）
           https://tyc.rei-yumesaki.net/material/utau/
           <br/>
-          ■つくよみちゃん公式RVCモデル（CV.夢前黎）
-          https://tyc.rei-yumesaki.net/work/software/rvc/
+          ■イラスト：みるくぱんだ＠お仕事期日要相談 様<br/>
+          URL https://drive.google.com/file/d/1f10JOmpR2w4Px4atoBvjMd-t6v5zDaV8/view?usp=sharing
+          <br/>
+          ■つくよみちゃん公式サイト
+          https://tyc.rei-yumesaki.net
           </li>
         </ul>
         <div className="flex justify-center mt-7">
