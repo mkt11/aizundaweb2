@@ -179,7 +179,7 @@ export default function Home() {
                               bg-black/30 rounded-lg p-3 border border-cyan-400/20">
                 録音した<span className="font-semibold text-white">あなたの声</span>を
                 <span className="font-semibold text-white">HuBERT × RVC</span> で
-                「つくよみちゃん」の声に変換するWebアプリです。<span className="font-semibold text-white">男性はピッチを +12 程度</span>に設定することをお勧めします。<span className="font-semibold text-white">歌なども変換可能です。</span>
+                「つくよみちゃん」の声に変換するWebアプリです。<span className="font-semibold text-white">男性はピッチを +12 、女性は ±0 程度に</span>に設定することをお勧めします。<span className="font-semibold text-white">歌なども変換可能です。</span>
               </div>
 
               {/* モード切替 */}
