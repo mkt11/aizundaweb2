@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 import { ReactNode } from 'react';
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata = {
   title: 'なろうよつくよみちゃん！',
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <div className="min-h-screen flex items-center justify-center p-4">
           {children}
         </div>
+        <Analytics/>
       </body>
     </html>
   );

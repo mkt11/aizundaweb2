@@ -17,6 +17,7 @@
     "@mui/material": "^7.1.0",
     "@tensorflow/tfjs-backend-wasm": "^4.22.0",
     "@tensorflow/tfjs-core": "^4.22.0",
+    "@vercel/analytics": "^1.5.0",
     "audio-resampler": "^1.0.1",
     "cosine-similarity": "^1.0.1",
     "framer-motion": "^12.12.2",
