@@ -9,7 +9,7 @@
     "postinstall": "node scripts/fetch-models.js"
   },
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.820.0",
