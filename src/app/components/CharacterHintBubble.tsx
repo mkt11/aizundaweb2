@@ -36,9 +36,9 @@ export default function CharacterHintBubble({ visible }: Props) {
         <div className="flex items-center gap-1 sm:gap-1.5">
           <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-pink-400" />
           <span className="whitespace-nowrap leading-snug">
-            私をタップして&nbsp;
+            ここをタップして
             <span className="hidden sm:inline">わたしのことを知ってね！</span>
-            <span className="inline sm:hidden">みてね！</span>
+            <span className="inline sm:hidden">わたしのことを知ってね！</span>
           </span>
           <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-pink-400" />
         </div>

@@ -10,7 +10,7 @@ export default function Infomation() {
     <div className="absolute bottom-3 right-3 z-50">
       {/* Info ボタン */}
       <button
-        className="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 shadow-md flex items-center justify-center hover:scale-105 transition-transform outline-none focus:ring-2 focus:ring-green-400"
+        className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-300 to-pink-600 shadow-md flex items-center justify-center hover:scale-105 transition-transform outline-none focus:ring-2 focus:ring-green-400"
         onClick={() => setOpen(true)}
         aria-label="アプリ情報を表示"
         tabIndex={0}
@@ -47,7 +47,7 @@ export default function Infomation() {
                   <line x1="6" y1="18" x2="18" y2="6" stroke="currentColor" strokeWidth="2" />
                 </svg>
               </button>
-              <h2 className="text-xl font-bold mb-2 text-green-700">naryouyoTsukuyomi-chan!</h2>
+              <h2 className="text-xl font-bold mb-2 text-pink-700">naryouyoTsukuyomi-chan!</h2>
               <p className="mb-3 text-sm">
                 本アプリは、AI技術を活用した音声変換・合成体験が可能なWebサービスです。音声を録音し、サーバまたはローカルでAI推論による音声変換を実行できます。
               </p>
@@ -57,9 +57,6 @@ export default function Infomation() {
               <div className="mt-2 mb-2 text-xs text-gray-600 border-t pt-2">
                 <b>ライセンス</b>
                 <br></br>
-                <span className="ml-1">
-                声質変換：つくよみちゃん公式RVCモデル<br></br>
-                </span>
                 <span className="ml-1">
                 イラスト素材：みるくぱんだ＠お仕事期日要相談 様 <br></br>
                 © Rei Yumesaki / みるくぱんだ

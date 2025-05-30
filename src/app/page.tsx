@@ -131,7 +131,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const t = setTimeout(() => setDisclaimerOpen(true), 5000);
+    const t = setTimeout(() => setDisclaimerOpen(true), 4500);
     return () => clearTimeout(t);
   }, []);
 
@@ -179,7 +179,7 @@ export default function Home() {
                               bg-black/30 rounded-lg p-3 border border-cyan-400/20">
                 録音した<span className="font-semibold text-white">あなたの声</span>を
                 <span className="font-semibold text-white">HuBERT × RVC</span> で
-                「つくよみちゃん」の声に変換するWebアプリです。<span className="font-semibold text-white">男性はピッチを +12 程度</span>に設定することをお勧めします。
+                「つくよみちゃん」の声に変換するWebアプリです。<span className="font-semibold text-white">男性はピッチを +12 程度</span>に設定することをお勧めします。<span className="font-semibold text-white">歌なども変換可能です。</span>
               </div>
 
               {/* モード切替 */}
@@ -227,7 +227,7 @@ export default function Home() {
                                  shadow-lg shadow-cyan-400/50
                                  disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                     >
-                      推論を実行
+                      声を変換！
                     </button>
                   </div>
 

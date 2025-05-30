@@ -11,7 +11,11 @@ const images: Record<Stage, string> = {
   inference: '/tsukuyomichan_image/tukuyomi3_0002.png',
 };
 
-export default function Character({ stage }: { stage: Stage }) {
+interface CharacterProps {
+  stage: Stage;
+}
+
+export default function Character({ stage }: CharacterProps) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -25,7 +29,7 @@ export default function Character({ stage }: { stage: Stage }) {
         scale:   { duration: 0.8 },
         y:       { duration: 10, repeat: Infinity, ease: 'easeInOut' },
       }}
-      className="w-100 h-130 mx-auto select-none pointer-events-none"
+      className="w-100 mx-auto select-none pointer-events-none py-0 sm:py-0 h-auto sm:h-130"
     >
       <img
         src={images[stage]}

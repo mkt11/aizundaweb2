@@ -26,8 +26,8 @@ export default function PitchSlider({
                  border border-cyan-400/30 shadow-2xl w-full"
     >
       <div className="flex items-center justify-between w-full px-2">
-        <span className="text-sm font-bold text-pink-300">Pitch Shift</span>
-        <span className="text-sm font-semibold text-pink-200">
+        <span className="text-sm font-bold text-cyan-300">Pitch Shift</span>
+        <span className="text-sm font-semibold text-cyan-200">
           {value} semitones
         </span>
       </div>
@@ -40,7 +40,7 @@ export default function PitchSlider({
         value={value}
         onChange={e => onChange(parseInt(e.currentTarget.value, 10))}
         className="w-full h-2 rounded-lg
-                   accent-pink-400 hover:accent-pink-500
+                   accent-cyan-400 hover:accent-blue-400
                    transition-all duration-200"
       />
     </motion.div>
