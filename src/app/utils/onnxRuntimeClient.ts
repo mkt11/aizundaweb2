@@ -7,7 +7,7 @@ import { highpassFilter }          from './filters'
 export type Provider = 'wasm' | 'webgl'
 
 const HUBERT_MODEL_URL = '/model/hubert_base.onnx'
-const RVC_MODEL_URL   = '/model/zundamon.onnx'
+const RVC_MODEL_URL   = '/model/tsukuyomi-chan.onnx'
 const MIN_AUDIO_LEN   = 160  // HuBERT の Conv が動く最小サンプル数
 
 /**

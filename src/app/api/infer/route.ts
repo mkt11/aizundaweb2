@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'file is required' }, { status: 400 })
     }
     const buf    = await file.arrayBuffer()
-    const result = await inferRvc(new Uint8Array(buf))
+    const result = await inferRvc(new Uint8Array(buf), 12)
     return new NextResponse(result, {
       status: 200,
       headers: { 'Content-Type': 'audio/wav' }
