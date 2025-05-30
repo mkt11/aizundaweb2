@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# なろうよ つくよみちゃん！
 
-## Getting Started
+<p align="center">
+  <img src="public/tsukuyomichan_image/tukuyomi3_0000.png" alt="つくよみちゃん" width="320"/>
+</p>
 
-First, run the development server:
+AI技術を活用した**音声変換・合成体験**ができるWebアプリです。  
+録音したあなたの声を「つくよみちゃん」の声に変換できます！
+
+---
+
+## 🚀 特徴
+
+- **録音した音声をAIで変換**  
+  HuBERT × RVCモデルを用いて、あなたの声を「つくよみちゃん」ボイスに変換します。
+- **Web上で完結**  
+  ブラウザだけで動作。サーバ/ローカル推論を両対応。
+- **ピッチ調整や歌声変換も可能**  
+  男性は+12、女性は±0程度のピッチ推奨。歌もOK！
+- **美しいUI/UX**  
+  Framer MotionやTailwindCSSによるサイバーで可愛いデザイン。
+
+---
+
+## 🖼️ スクリーンショット
+
+<p align="center">
+  <img src="public/tsukuyomichan_image/tukuyomi3_0002.png" alt="スクリーンショット" width="480"/>
+</p>
+
+---
+
+## 🛠️ 技術スタック
+
+- **フロントエンド**: Next.js, React, TypeScript, TailwindCSS, Framer Motion, WebAudio API
+- **AI/音声変換**: ONNX, RVC, HuBERT, onnxruntime-web/node
+- **バックエンド**: FastAPI, Python, torch, torchaudio, pyworld, fairseq ほか
+- **その他**: MUI, Lucide Icons, S3, Particles.js など
+
+---
+
+## 📦 セットアップ方法
+
+### 1. 必要なもの
+
+- Node.js 22.x
+- Python 3.8+
+- (推奨) Chrome/Edgeなどの最新ブラウザ
+
+### 2. インストール
+
+```bash
+git clone https://github.com/yourname/narouyoTsukuyomi-chan.git
+cd narouyoTsukuyomi-chan
+npm install
+pip install -r requirements.txt
+```
+
+### 3. 開発サーバ起動
 
 ```bash
 npm run dev
-# or
+# または
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ブラウザで [http://localhost:3000](http://localhost:3000) を開いてください。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎤 使い方
 
-## Learn More
+1. 「録音」ボタンで自分の声を録音
+2. ピッチを調整（男性は+12、女性は±0程度を推奨）
+3. 「変換」ボタンでAIがつくよみちゃんボイスに変換
+4. 変換後の音声を再生・ダウンロード
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚠️ 注意・免責事項
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 本アプリは**声質変換AIのデモ**です。実運用はできません。
+- 変換後の音声の**公開・再配布は禁止**です。
+- 本サービス利用による損害等について、提供者は一切責任を負いません。
+- 本ソフトウェアの音声合成には、フリー素材キャラクター「つくよみちゃん」（© Rei Yumesaki）が無料公開している音声データを使用しています。**mkt11が作成したオリジナルキャラクターではない**点をご留意ください。
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 ライセンス・クレジット
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **キャラクター・音声**:  
+  [つくよみちゃん公式サイト](https://tyc.rei-yumesaki.net)    
+  [つくよみちゃんコーパス](https://tyc.rei-yumesaki.net/material/corpus/)  
+  [つくよみちゃんUTAU音源](https://tyc.rei-yumesaki.net/material/utau/)
+
+- **イラスト**:  
+  みるくぱんだ＠お仕事期日要相談 様   © Rei Yumesaki / みるくぱんだ
+  [イラスト配布URL](https://drive.google.com/file/d/1f10JOmpR2w4Px4atoBvjMd-t6v5zDaV8/view?usp=sharing)
+
+---
+
+## 💡 貢献・フィードバック
+
+バグ報告・機能要望・プルリクエスト歓迎です！  
+（ただしキャラクター利用規約・AI倫理にご配慮ください）
+
+---
+
+## 🐾 Special Thanks
+
+- つくよみちゃん公式・夢前黎様
+- みるくぱんだ様
+- RVC, HuBERT, ONNX, FastAPI, Next.js, TailwindCSS, Framer Motion 各OSSコミュニティ
+
+---
+
+「なろうよ、つくよみちゃん！」
