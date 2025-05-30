@@ -19,7 +19,7 @@ export default function Recorder({
   onRecorded,
   onStart,
   onStop,
-  maxDuration = 10,
+  maxDuration = 5,
 }: RecorderProps) {
   const [isRecording, setIsRecording] = useState(false);
   const [elapsed,     setElapsed]     = useState(0);
