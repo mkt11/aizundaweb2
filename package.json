@@ -20,6 +20,7 @@
     "audio-resampler": "^1.0.1",
     "cosine-similarity": "^1.0.1",
     "framer-motion": "^12.12.2",
+    "lucide-react": "^0.511.0",
     "next": "15.3.2",
     "node-wav": "^0.0.2",
     "onnxruntime-node": "1.14.0",
