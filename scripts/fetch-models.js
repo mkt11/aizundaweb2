@@ -4,16 +4,14 @@ const fs   = require('fs');
 const path = require('path');
 const { S3Client, GetObjectCommand } = require('@aws-sdk/client-s3');
 
-// S3 から key を取得し、dest に保存するヘルパー
-async function downloadModel(s3, bucket, key, dest) {
+async function downloadModel(s3, bucket, key, tmpPath) {
   const cmd = new GetObjectCommand({ Bucket: bucket, Key: key });
   const res = await s3.send(cmd);
-
   await new Promise((resolve, reject) => {
-    const stream = fs.createWriteStream(dest);
-    res.Body.pipe(stream);
+    const ws = fs.createWriteStream(tmpPath);
+    res.Body.pipe(ws);
     res.Body.on('error', reject);
-    stream.on('finish', resolve);
+    ws.on('finish', resolve);
   });
 }
 
@@ -32,27 +30,52 @@ async function main() {
     },
   });
 
-  // ディレクトリ準備
-  fs.mkdirSync(path.resolve(__dirname, '../public/model'), { recursive: true });
-  fs.mkdirSync(path.resolve(__dirname, '../server_model'), { recursive: true });
+  // 一時保存ディレクトリ
+  const tmpDir = path.resolve(__dirname, '../.model_tmp');
+  fs.mkdirSync(tmpDir, { recursive: true });
 
-  // ダウンロード項目
-  const items = [
-    { key: 'public/model/hubert_base.onnx',    dest: 'public/model/hubert_base.onnx' },
-    { key: 'public/model/tsukuyomi-chan.onnx', dest: 'public/model/tsukuyomi-chan.onnx' },
-    { key: 'server_model/hubert_base.onnx',    dest: 'server_model/hubert_base.onnx' },
-    { key: 'server_model/tsukuyomi-chan.onnx', dest: 'server_model/tsukuyomi-chan.onnx' },
+  // 配置先ディレクトリ
+  fs.mkdirSync(path.resolve(__dirname, '../public/model'),   { recursive: true });
+  fs.mkdirSync(path.resolve(__dirname, '../server_model'),   { recursive: true });
+
+  // S3 のキーと、ローカル配置先をまとめて定義
+  const models = [
+    {
+      key:  'models/hubert_base.onnx',   // S3 側の共通キー
+      files: [
+        'public/model/hubert_base.onnx',
+        'server_model/hubert_base.onnx',
+      ]
+    },
+    {
+      key:  'models/tsukuyomi-chan.onnx',
+      files: [
+        'public/model/tsukuyomi-chan.onnx',
+        'server_model/tsukiyomi-chan.onnx',
+      ]
+    }
   ];
 
-  for (const { key, dest } of items) {
-    console.log(`Downloading ${key} → ${dest} ...`);
-    await downloadModel(s3, MODEL_BUCKET, key, path.resolve(__dirname, `../${dest}`));
+  for (const m of models) {
+    const tmpPath = path.join(tmpDir, path.basename(m.key));
+    console.log(`Downloading ${m.key} → ${tmpPath}`);
+    await downloadModel(s3, MODEL_BUCKET, m.key, tmpPath);
+
+    // ダウンロードした一時ファイルを、public/model と server_model にコピー
+    for (const destRel of m.files) {
+      const destAbs = path.resolve(__dirname, `../${destRel}`);
+      fs.copyFileSync(tmpPath, destAbs);
+      console.log(`  Copied → ${destRel}`);
+    }
   }
 
-  console.log('✅ モデルのダウンロード完了');
+  // 一時ディレクトリを消す（必要なら）
+  fs.rmSync(tmpDir, { recursive: true, force: true });
+
+  console.log('✅ モデルのダウンロード＆配置完了');
 }
 
 main().catch(err => {
-  console.error('❌ モデルダウンロード中にエラー発生:', err);
+  console.error('❌ モデル取得中にエラー発生:', err);
   process.exit(1);
 });
