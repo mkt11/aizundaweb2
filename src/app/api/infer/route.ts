@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
       status: 200,
       headers: { 'Content-Type': 'audio/wav' }
     });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (e: any) {
     console.error('API infer error:', e);
     return NextResponse.json({ error: e.message || String(e) }, { status: 500 });

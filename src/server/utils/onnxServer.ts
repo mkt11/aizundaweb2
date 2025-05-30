@@ -195,7 +195,7 @@ async function runRvc(
 ): Promise<Float32Array|Uint16Array> {
   const [B, T, C] = dims
 
-  // 長さ合わせ
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const padF0     = (arr: any[], len: number, fill: any) =>
     arr.length>len ? arr.slice(0,len) : [...arr, ...Array(len-arr.length).fill(fill)]
   const f0_adj    = padF0(Array.from(f0Arr),    T, f0Arr[f0Arr.length-1])

@@ -157,6 +157,7 @@ export async function runPipeline(
     setStatus('🔄 WAV 生成中…')
     const blob = pcmToWavBlob(pcmOut, 40000)
     return URL.createObjectURL(blob)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     console.error('🚨 runPipeline error:', err)
     setStatus(`❌ エラー: ${err.message || err}`)
