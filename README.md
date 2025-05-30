@@ -1,9 +1,7 @@
 # なろうよ つくよみちゃん！
-
 <p align="center">
-  <img width="503" alt="image" src="https://github.com/user-attachments/assets/f626e8a7-cc6f-459d-a081-79856c3eef4e" alt="つくよみちゃん" width="320"/>
+  <img width="761" alt="image" src="https://github.com/user-attachments/assets/5b53a5d2-14aa-45c5-a8a3-4d3c446319c2" width="480"/>
 </p>
-
 AI技術を活用した**音声変換・合成体験**ができるWebアプリです。  
 録音したあなたの声を「つくよみちゃん」の声に変換できます！
 
@@ -19,15 +17,6 @@ AI技術を活用した**音声変換・合成体験**ができるWebアプリ�
   男性は+12、女性は±0程度のピッチ推奨。歌もOK！
 - **美しいUI/UX**  
   Framer MotionやTailwindCSSによるサイバーで可愛いデザイン。
-
----
-
-## 🖼️ スクリーンショット
-
-<p align="center">
-  <img width="761" alt="image" src="https://github.com/user-attachments/assets/5b53a5d2-14aa-45c5-a8a3-4d3c446319c2" width="480"/>
-  スクリーンショット
-</p>
 
 ---
 
