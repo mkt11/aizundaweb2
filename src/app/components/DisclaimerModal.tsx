@@ -12,7 +12,7 @@ export default function DisclaimerModal({ visible, onClose }: DisclaimerModalPro
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
       <div className="bg-white rounded-2xl shadow-xl p-7 max-w-lg w-full border border-green-400/50">
         <h2 className="text-lg font-bold mb-3 text-green-700">免責事項・ご利用にあたってのご案内</h2>
-        <ul className="list-disc pl-5 text-sm text-gray-800 space-y-3">
+        <ul className="list-disc pl-5 text-xs text-gray-800 space-y-3">
           <li>
             本アプリケーションは、「声質変換AIをどなたでも手軽にご利用いただくこと」を目的としたデモンストレーションAppです。
             声質変換の可能性を体験いただくことを主眼としています。
@@ -23,14 +23,14 @@ export default function DisclaimerModal({ visible, onClose }: DisclaimerModalPro
           </li>
           <li>
           本サービスの利用により発生した損害について、サービス提供者は責任を負わないものとします。
-          出力した音声を次の目的で使用することを禁止します。<br/>
-          ■人を批判・攻撃すること。（「批判・攻撃」の定義は、つくよみちゃんキャラクターライセンスに準じます）<br/>
+          また、出力した音声を次の目的で使用することを禁止します。<br/>
+          ■人を批判・攻撃すること。（「批判・攻撃」の定義は、<a href="https://tyc.rei-yumesaki.net/about/terms/" target="_blank" style={{ color: '#2563eb' }}>つくよみちゃんキャラクターライセンス</a>に準じます）<br/>
           ■特定の政治的立場・宗教・思想への賛同または反対を呼びかけること。<br/>
           ■刺激の強い表現をゾーニングなしで公開すること。<br/>
           ■他者に対して二次利用（素材としての利用）を許可する形で公開すること。<br/>
           </li>
           <li>
-          本ソフトウェアの音声合成には、フリー素材キャラクター「つくよみちゃん」（© Rei Yumesaki）が無料公開している音声データを使用しています。
+          <span className="text-red-600">本ソフトウェアの音声合成には、フリー素材キャラクター「つくよみちゃん」（© Rei Yumesaki）が無料公開している音声データを使用しています。</span>
           <br/>
           ■つくよみちゃんコーパス（CV.夢前黎）
           https://tyc.rei-yumesaki.net/material/corpus/
