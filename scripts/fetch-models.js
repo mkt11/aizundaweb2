@@ -51,7 +51,7 @@ async function main() {
       key:  'models/tsukuyomi-chan.onnx',
       files: [
         'public/model/tsukuyomi-chan.onnx',
-        'server_model/tsukiyomi-chan.onnx',
+        'server_model/tsukuyomi-chan.onnx',
       ]
     }
   ];
