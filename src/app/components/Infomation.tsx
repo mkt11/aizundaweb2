@@ -61,7 +61,8 @@ export default function Infomation() {
                 声質変換：つくよみちゃん公式RVCモデル<br></br>
                 </span>
                 <span className="ml-1">
-                イラスト素材：えみゃコーラ 様（https://tyc.rei-yumesaki.net/material/illust/）
+                イラスト素材：みるくぱんだ＠お仕事期日要相談 様 <br></br>
+                © Rei Yumesaki / みるくぱんだ
                 </span>
               </div>
               <div className="text-right mt-2">

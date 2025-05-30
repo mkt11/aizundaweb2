@@ -14,6 +14,7 @@ import Infomation           from './components/Infomation';
 import ProcessingStatus     from './components/ProcessingStatus';
 import Intro                from './components/Intoro';
 import DisclaimerModal      from './components/DisclaimerModal';
+import PitchSlider from './components/PitchSlider';
 
 import { useOnnxSession }   from './hooks/useOnnxSession';
 import { runPipeline }      from './utils/onnxRuntimeClient';
@@ -39,6 +40,7 @@ export default function Home() {
   const [sourceURL,  setSourceURL]  = useState<string|null>(null);
   const [resultURL,  setResultURL]  = useState<string|null>(null);
   const [status,     setStatus]     = useState<string|null>(null);
+  const [semitone, setSemitone] = useState<number>(12);
 
   /*──────── 免責事項 ────────*/
   const [disclaimerOpen, setDisclaimerOpen] = useState(false);
@@ -92,12 +94,13 @@ export default function Home() {
       if (mode === 'server') {
         const form = new FormData();
         form.append('file', sourceFile);
+        form.append('semitone', semitone.toString());
         const res = await fetch('/api/infer', { method: 'POST', body: form });
         if (!res.ok) throw new Error(await res.text());
         url = URL.createObjectURL(await res.blob());
       } else {
         if (!session) throw new Error('クライアントモデルがロードされていません。');
-        url = await runPipeline(sourceFile, setStatus, 'wasm');
+        url = await runPipeline(sourceFile, setStatus, 'wasm', semitone);
       }
 
       setResultURL(url);
@@ -176,7 +179,7 @@ export default function Home() {
                               bg-black/30 rounded-lg p-3 border border-cyan-400/20">
                 録音した<span className="font-semibold text-white">あなたの声</span>を
                 <span className="font-semibold text-white">HuBERT × RVC</span> で
-                キャラクターの声に変換するWebアプリです。
+                「つくよみちゃん」の声に変換するWebアプリです。<span className="font-semibold text-white">男性はピッチを +12 程度</span>に設定することをお勧めします。
               </div>
 
               {/* モード切替 */}
@@ -199,7 +202,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-
+              <PitchSlider value={semitone} onChange={setSemitone} />
               {/* レコーダー */}
               <Recorder
                 onStart   ={handleRecordStart}

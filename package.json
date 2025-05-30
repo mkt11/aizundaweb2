@@ -20,6 +20,7 @@
     "node-wav": "^0.0.2",
     "onnxruntime-node": "^1.22.0",
     "onnxruntime-web": "^1.22.0",
+    "pitchfinder": "^2.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-tsparticles": "^2.12.2",
@@ -28,7 +29,8 @@
     "wav-decoder": "^1.3.0",
     "wav-encoder": "^1.3.0",
     "wav-file-encoder": "^1.0.4",
-    "wavefile": "^11.0.0"
+    "wavefile": "^11.0.0",
+    "world": "^0.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
