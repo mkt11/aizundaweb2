@@ -75,8 +75,8 @@ export default function Home() {
         setSourceFile(wavFile);
         setSourceURL(URL.createObjectURL(wavFile));
         setStatus(null);
-      } catch (e: any) {
-        setStatus(`❌ エラー: ${e.message}`);
+      } catch (e) {
+        setStatus('WAV変換エラー');
       }
     })();
   }, [rawBlob]);
@@ -105,8 +105,6 @@ export default function Home() {
 
       setResultURL(url);
       setStatus('✅ 完了!');
-    } catch (e: any) {
-      setStatus(`❌ エラー: ${e.message}`);
     } finally {
       setStage('idle');
     }
